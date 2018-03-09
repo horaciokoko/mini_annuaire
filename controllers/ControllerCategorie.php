@@ -95,13 +95,16 @@ class ControllerCategorie
 		$this->_categorieManager=new CategorieManager;
 		$this->_ficheManager=new FicheManager;
 		$fiches=$this->_ficheManager->getFiches();
+		$categories=$this->_categorieManager->getCategories();
+			
 		//si l'on veut la formulaire de modification
 		if (!empty($id)) {
 
 			$categorie=$this->_categorieManager->getCategorieById($id);
 
 			if (!empty($categorie)) {
-				$valeur_champs=$categorie;;
+				$valeur_champs=$categorie;
+				
 				
 			}
 		}	
@@ -129,7 +132,8 @@ class ControllerCategorie
 			
 			
 		}
-		$categories=$this->_categorieManager->getCategories();	
+		
+
 		//On affiche la vue
 		$this->generateView(array('msg' => $msg ,'categories' => $categories,'fiches' => $fiches,'valeur_champs' => $valeur_champs),'categorie_form');	
 	}

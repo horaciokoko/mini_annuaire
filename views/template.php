@@ -39,7 +39,7 @@
 </script>
 
 
-<p class="footer">Merci</p>
+<p class="footer"></p>
 </body>
 
 

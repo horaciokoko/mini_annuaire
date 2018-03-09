@@ -19,7 +19,7 @@
 		<tr>
 			<td colspan="2">
 			<div class="btn-group" role="group" aria-label="Basic example">
-				<a class="btn btn-primary" href="<?php echo '/phpMVC1/update/'.$fiche->getId(); ?>">Modifier</a>
+				<a class="btn btn-primary" href="<?php echo '/phpMVC1/fiche/update/'.$fiche->getId(); ?>">Modifier</a>
 				<button class="btn btn-primary" data-toggle="modal" data-target="#deleteModal">Supprimer</button>
 			</div>
 			</td>
