@@ -11,7 +11,7 @@ abstract class Model
 	}**/
 	private static $db;
 	private static function initDB(){
-		self::$db = new PDO('mysql:host=localhost:3306;dbname=dbrobsons23971com;charset=utf8','robsons23971com','fB9vNPA');
+		self::$db = new PDO('mysql:host=localhost;dbname=dbrobsons23971com;charset=utf8','robsons23971com','fB9vNPA');
 		self::$db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_WARNING);
 	}
 	protected function getDB(){

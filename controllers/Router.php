@@ -1,4 +1,6 @@
 <?php
+
+
 require_once('views/View.php');
 /**
 * 
@@ -15,13 +17,11 @@ class Router
 	}
 	**/
 	public function routeReq()
-	{
+	{		
 
 		try {
-
-			spl_autoload_register(function($class){
-				require_once('models/'.$class.'.php');
-			});
+			require_once('constant.php');
+			require_once('loader.php');
 			$url='';
 			$data=[];
 			
@@ -32,23 +32,29 @@ class Router
 
 				$controllerClass="Controller".$controller;
 				$controllerFile="controllers/".$controllerClass.".php";
+				
 				if (file_exists($controllerFile)) {
 					
-					$data=$_POST;
-					require_once($controllerFile);
-					$this->_ctrl=new $controllerClass($url,$data);
+					if (isset($_POST)) {
+						$data=$_POST;
+					}										
+					$this->_ctrl=new $controllerClass($url,$data);	
 
-
+					
 				}
 				else {
+					
 					throw new Exception("Page not found");
+
 					
 				}
 
 			}
 			else {
-				require_once("controllers/ControllerAccueil.php");
-				$this->_ctrl=new ControllerAccueil($url,[]);
+				
+				
+				$this->_ctrl=new ControllerAccueil($url,$data);
+
 
 
 			}

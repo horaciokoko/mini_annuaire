@@ -2,7 +2,7 @@
 /**
 * 
 */
-require_once('views/View.php');
+
 
 class ControllerAccueil
 {
@@ -10,7 +10,7 @@ class ControllerAccueil
 	private $_ficheManager;
 	private $_view;
 	
-	public function __construct($url)
+	public function __construct($url,$data=[])
 	{
 		
 		$this->index();		

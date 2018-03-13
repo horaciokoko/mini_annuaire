@@ -2,7 +2,7 @@
 /**
 * 
 */
-require_once('views/View.php');
+
 
 class ControllerCategorie
 {
@@ -10,14 +10,13 @@ class ControllerCategorie
 	private $_ficheManager;
 	private $_view;
 	
-	public function __construct($url,$data)
+	public function __construct($url,$data=[])
 	{
-		
-		
-		if (isset($url) && 1 < count($url) && $url[1]!= "") {
+				
+		if (!empty($url) && 1 < count($url) && $url[1]!= "") {
 			
 			
-			if (count($url) == 2  || (count($url) == 3 && $url[2] == "")) {
+			if (count($url) == 2 ) {
 
 
 				if ($url[1]=="ajout") {
@@ -33,10 +32,11 @@ class ControllerCategorie
 				}
 				
 				else {
-					if ($url[1] != "" && !empty((int)$url[1])) {
+					if ($url[1] != "" && !empty($url[1])) {
 						$this->categorie($url[1]);
 					}
-					else throw new Exception("Error Processing Request", 1);
+					else throw new Exception("Page introuvable", 1);
+					
 
 					
 				}
@@ -44,25 +44,27 @@ class ControllerCategorie
 
 
 			}
-			elseif (count($url) == 3 && $url[1]=="update") {
+			elseif (count($url) == 3 ) {
 					
-					if (!empty($data)) {
+					if ($url[1]=="update") {
+						if (!empty($data)) {
 
-						$this->update_categorie($data,$url[2]);					
-					}
-					else{
+							$this->update_categorie($data,$url[2]);					
+						}
+						else{
 
-						$this->form_categorie([],$url[2]);					
+							$this->form_categorie([],$url[2]);					
+						}
 					}
-			}
-			elseif (count($url) == 3 && $url[1]=="delete") {
-					$id_delete=(int)$url[2];
-					
-					if (isset($id_delete)) {
-						$this->delete_category($id_delete);					
+					else {
+						$id_delete=(int)$url[2];
+						
+						if (isset($id_delete)) {
+							$this->delete_category($id_delete);					
+						}
 					}
-			}
-			else throw new Exception("Error Processing Request", 1);
+			}			
+			else throw new Exception("Page introuvable", 1);
 			
 			
 			

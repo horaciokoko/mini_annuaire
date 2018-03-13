@@ -2,7 +2,7 @@
 /**
 * 
 */
-require_once('views/View.php');
+
 
 class ControllerFiche
 {
@@ -10,10 +10,10 @@ class ControllerFiche
 	private $_categorieManager;
 	private $_view;
 	
-	public function __construct($url,$data)
+	public function __construct($url,$data=[])
 	{		
 		
-		if (isset($url) && 1 < count($url) && $url[1]!= "") {
+		if (!empty($url) && 1 < count($url) && $url[1]!= "") {
 			
 			
 			if (count($url) == 2 ) {
@@ -35,7 +35,7 @@ class ControllerFiche
 				}				
 				else {
 					
-					if ($url[1] != "" && !empty((int)$url[1])) {
+					if ($url[1] != "" && !empty($url[1])) {
 						$this->fiche($url[1]);
 					}
 					else throw new Exception("Error Processing Request", 1);
@@ -73,6 +73,7 @@ class ControllerFiche
 			
 		}
 		else {
+			
 			$this->fiches();
 		}
 	}

@@ -5,7 +5,7 @@
       <link rel="stylesheet" type="text/css" href = " <?php echo '/phpMVC1/public/css/bootstrap.css'; ?>"/>
       <link rel="stylesheet" type="text/css" href = " <?php echo '/phpMVC1/public/css/style.css'; ?>"/>
 
-      
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
   </head>
   <body>  
  
